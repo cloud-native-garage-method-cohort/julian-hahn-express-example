@@ -1,0 +1,19 @@
+apiVersion: tekton.dev/v1beta1
+metadata:
+  generateName: buildah-run
+kind: PipelineRun
+spec:
+  pipelineRef:
+    name: buildah
+  params:
+  - name: url
+    value: "https://github.com/cloud-native-garage-method-cohort/julian-hahn-express-example"
+  workspaces: 
+    - name: output
+      volumeClaimTemplate:
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          resources:
+            requests:
+              storage: 500Mi

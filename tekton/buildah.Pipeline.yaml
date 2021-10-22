@@ -1,0 +1,34 @@
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: buildah
+spec:
+  workspaces:
+  - name: output
+  params:
+  - name: url
+    type: string
+    description: url to the git repo
+  tasks:
+  - name: fetch-source
+    taskRef:
+      name: git-clone
+      kind: ClusterTask
+    params:
+    - name: url
+      value: $(params.url)
+    workspaces:
+    - name: output
+      workspace: output
+  - name: buildah #lint mardown
+    taskRef:
+      name: buildah
+      kind: ClusterTask
+    runAfter:
+      - fetch-source
+    params:
+      - name: IMAGE
+        value: 
+    workspaces:
+      - name: source
+        workspace: output
