@@ -29,6 +29,8 @@ spec:
     params:
       - name: IMAGE
         value: quay.io/juhahn/express-sample-app
+      - name: DOCKERFILE
+        value: ./express-app/Dockerfile
     workspaces:
       - name: source
         workspace: output
