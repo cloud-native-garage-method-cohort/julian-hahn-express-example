@@ -28,7 +28,7 @@ spec:
       - fetch-source
     params:
       - name: IMAGE
-        value: 
+        value: quay.io/juhahn/express-sample-app
     workspaces:
       - name: source
         workspace: output
