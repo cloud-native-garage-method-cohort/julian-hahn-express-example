@@ -7,8 +7,12 @@ spec:
   pipelineRef:
     name: buildah
   params:
-  - name: url
+  - name: app-name
+    value: julians-express-app
+  - name: source-repo
     value: "https://github.com/cloud-native-garage-method-cohort/julian-hahn-express-example"
+  - name: image-repo
+    value: quay.io/juhahn/express-sample-app
   workspaces: 
     - name: output
       volumeClaimTemplate:
